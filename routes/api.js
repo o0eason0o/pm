@@ -31,4 +31,18 @@ router.delete('/c1/:id', function(req, res, next){
     });
 });
 
+router.put('/c1/:id', function(req, res, next){
+    C1.update({
+        _id: req.params.id
+    }, {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+    }, function(err, c1){
+        if (err) throw err;
+        res.json(c1);
+    });
+});
+
+
 module.exports = router;
